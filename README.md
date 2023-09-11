@@ -34,4 +34,4 @@ My solution to CS50w's Project 1
 
 6. **Random Page**: Clicking “Random Page” in the sidebar should take user to a random encyclopedia entry.
 
-7. **Markdown to HTML Conversion**: On each entry’s page, any Markdown content in the entry file should be converted to HTML before being displayed to the user. You may use the _python-markdown2_ package to perform this conversion, installable via _pip3 install markdown2_.
+7. ~~**Markdown to HTML Conversion**:~~ On each entry’s page, any Markdown content in the entry file should be converted to HTML before being displayed to the user. You may use the _python-markdown2_ package to perform this conversion, installable via _pip3 install markdown2_.
