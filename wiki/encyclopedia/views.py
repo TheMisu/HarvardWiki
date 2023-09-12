@@ -7,8 +7,8 @@ def convert_md_to_html(title):
     """
     Converts a MD file to HTML
 
-    :param title: The title of the MD file we want to convert.
-    :type title: String
+    :param title: The title of the .md file we want to convert.
+    :type title: str
     """
     content = util.get_entry(title)
     markdowner = Markdown()
@@ -25,6 +25,14 @@ def index(request):
     })
 
 def entry(request, title):
+    """
+    Renders the html content of a .md file 
+
+    :param request: The HTTP request made by the user
+    :type request: HttpRequest
+    :param title: The title of the .md file we want to render
+    :type title: str
+    """
     html_content = convert_md_to_html(title)
 
     if html_content == None:
@@ -37,3 +45,4 @@ def entry(request, title):
             "title": title,
             "html_content": html_content
         })
+
