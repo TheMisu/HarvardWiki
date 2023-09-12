@@ -8,11 +8,12 @@ My solution to CS50w's Project 1
     2. save_entry: saves a new encyclopedia entry, given its title and some MD content.
     3. get_entry: retrieves an encyclopedia entry by its title, returning its MD contents if the entry exists or None otherwise
 
+
 # Task:
-1. **Entry Page**: Visiting /wiki/TITLE where TITLE is the title of an encyclopedia entry should render a page that displays the contents of that entry
-    - The view should get the content of the encyclopedia entry by calling the appropriate util function.
+1. ~~**Entry Page**: Visiting /wiki/TITLE where TITLE is the title of an encyclopedia entry should render a page that displays the contents of that entry~~
+    - ~~The view should get the content of the encyclopedia entry by calling the appropriate util function.~~
     - ~~If an entry is requested that does not exist, the user should be presented with an error page indicating that their requested page was not found.~~
-    - If the entry does exist, the user should be presented with a page that displays the content of the entry. The title of the page should include the name of the entry.
+    - ~~If the entry does exist, the user should be presented with a page that displays the content of the entry. The title of the page should include the name of the entry.~~
 
 2. **Index Page**: Update index.html such that, instead of merely listing the names of all pages in the encyclopedia, user can click on any entry name to be taken directly to that entry page.
 
@@ -35,3 +36,7 @@ My solution to CS50w's Project 1
 6. **Random Page**: Clicking “Random Page” in the sidebar should take user to a random encyclopedia entry.
 
 7. ~~**Markdown to HTML Conversion**:~~ On each entry’s page, any Markdown content in the entry file should be converted to HTML before being displayed to the user. You may use the _python-markdown2_ package to perform this conversion, installable via _pip3 install markdown2_.
+
+
+# Hint:
+- By default, when substituting a value in a Django template, Django HTML-escapes the value to avoid outputting unintended HTML. If you want to allow for an HTML string to be outputted, you can do so with the safe filter (as by adding |safe after the variable name you’re substituting).
