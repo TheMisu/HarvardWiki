@@ -37,7 +37,7 @@ def entry(request, title):
 
     if html_content == None:
         return render(request, "encyclopedia/error.html", {
-            "title": title,
+            "title": "Error",
             "message": "The entry you were looking for does not exist. "
         })
     else:
@@ -45,4 +45,21 @@ def entry(request, title):
             "title": title,
             "html_content": html_content
         })
+
+def search(request):
+    """
+    Searches a specific entry in the list of entries and renders it if existent
+
+    :param request: The HTTP request the user makes in the searchbar
+    :type request: HttpRequest
+    """
+    if request.method == "POST":
+        # get the 'q' parameter from the URL or set query = '' if q doesn't exist
+        query = request.POST['q']
+        html_content = convert_md_to_html(query)
+        if html_content is not None:
+            return render(request, "encyclopedia/entry.html", {
+                "title": query,
+                "html_content": html_content
+            })
 
