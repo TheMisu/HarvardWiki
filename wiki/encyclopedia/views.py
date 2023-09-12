@@ -28,6 +28,12 @@ def entry(request, title):
     html_content = convert_md_to_html(title)
 
     if html_content == None:
-        pass
+        return render(request, "encyclopedia/error.html", {
+            "title": title,
+            "message": "The entry you were looking for does not exist. "
+        })
     else:
-        return render(request, "encyclopedia/entry.html")
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "html_content": html_content
+        })
