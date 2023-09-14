@@ -2,6 +2,7 @@ import re
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from markdown2 import Markdown
 
 
 def list_entries():
@@ -35,3 +36,19 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def convert_md_to_html(title):
+    """
+    Converts a MD file to HTML
+
+    :param title: The title of the .md file we want to convert.
+    :type title: str
+    """
+    content = get_entry(title)
+    markdowner = Markdown()
+    
+    # check if the file exists (content != None)
+    if content == None:
+        return None
+    else:    
+        return markdowner.convert(content)
