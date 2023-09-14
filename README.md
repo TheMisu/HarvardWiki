@@ -19,7 +19,7 @@ My solution to CS50w's Project 1
 
 3. **Search**: Allow the user to type a query into the search box in the sidebar to search for an encyclopedia entry.
     - ~~If the query matches the name of an encyclopedia entry, the user should be redirected to that entry’s page.~~
-    - If the query does not match the name of an encyclopedia entry, the user should instead be taken to a search results page that displays a list of all encyclopedia entries that have the query as a substring. For example, if the search query were ytho, then Python should appear in the search results.
+    - ~~If the query does not match the name of an encyclopedia entry, the user should instead be taken to a search results page that displays a list of all encyclopedia entries that have the query as a substring. For example, if the search query were ytho, then Python should appear in the search results.~~
     - Clicking on any of the entry names on the search results page should take the user to that entry’s page.
 
 4. **New Page**: Clicking “Create New Page” in the sidebar should take the user to a page where they can create a new encyclopedia entry.
