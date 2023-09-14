@@ -7,10 +7,15 @@
 {% block body %}
     <h1>Results</h1>
 
+    {% if entries_substr %}
+
     <ul>
         {% for entry in entries_substr %}
-            <li><a href="{% url 'entry' title=entry %}">{{entry}}</a></li>
+                <li><a href="{% url 'entry' title=entry %}">{{entry}}</a></li>
         {% endfor %}
     </ul>
 
+    {% else %}
+        {{ err_msg | safe}}
+    {% endif %}
 {% endblock %}

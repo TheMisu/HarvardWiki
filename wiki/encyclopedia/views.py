@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from . import util
 
 
@@ -55,8 +56,16 @@ def search(request):
                     "message": "The entry you were looking for does not exist. "
                 })
         else:
-            return render(request, "encyclopedia/search.html", {
-            "title": "Search Result",
-            "entries_substr": util.find_substring_entry(query)
-        })
-
+            if util.find_substring_entry(query) != []:
+                return render(request, "encyclopedia/search.html", {
+                "title": "Search Result",
+                "entries_substr": util.find_substring_entry(query)
+                })
+            else:
+                err_msg = ("There are no entries related to your search. " +  
+                           "Please return to the <a href=" + reverse("index") + 
+                           ">home</a> page") 
+                return render(request, "encyclopedia/search.html", {
+                "title": "Search Result",
+                "err_msg": err_msg
+                })                
