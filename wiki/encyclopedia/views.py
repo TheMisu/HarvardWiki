@@ -57,6 +57,6 @@ def search(request):
         else:
             return render(request, "encyclopedia/search.html", {
             "title": "Search Result",
-            "entries": util.list_entries()
+            "entries_substr": util.find_substring_entry(query)
         })
 

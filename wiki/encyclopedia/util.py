@@ -68,4 +68,9 @@ def find_substring_entry(query: str) -> list[str]:
     :param query: The entry the user tried to find on the wiki
     :type query: str
     """
+    result = []
+    for entry in list_entries():
+        if query in entry:
+            result.append(entry)
     
+    return result
