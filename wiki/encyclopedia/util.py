@@ -19,6 +19,11 @@ def save_entry(title, content):
     Saves an encyclopedia entry, given its title and Markdown
     content. If an existing entry with the same title already exists,
     it is replaced.
+
+    :param title: The title of the entry we want to save
+    :type title: str
+    :param content: The md content of the new entry we want to create
+    :type content: str?
     """
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
@@ -26,10 +31,13 @@ def save_entry(title, content):
     default_storage.save(filename, ContentFile(content))
 
 
-def get_entry(title):
+def get_entry(title: str):
     """
     Retrieves an encyclopedia entry by its title. If no such
     entry exists, the function returns None.
+
+    :param title: The title of the entry we want to get.
+    :type title: str
     """
     try:
         f = default_storage.open(f"entries/{title}.md")
@@ -37,7 +45,7 @@ def get_entry(title):
     except FileNotFoundError:
         return None
 
-def convert_md_to_html(title):
+def convert_md_to_html(title: str):
     """
     Converts a MD file to HTML
 
@@ -52,3 +60,12 @@ def convert_md_to_html(title):
         return None
     else:    
         return markdowner.convert(content)
+
+def find_substring_entry(query: str) -> list[str]:
+    """
+    Returns a list of all wiki entries that have the query as a substring.
+
+    :param query: The entry the user tried to find on the wiki
+    :type query: str
+    """
+    
