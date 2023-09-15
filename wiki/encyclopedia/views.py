@@ -69,3 +69,6 @@ def search(request):
                 "title": "Search Result",
                 "err_msg": err_msg
                 })                
+
+def create(request):
+    return render(request, "encyclopedia/create.html")
