@@ -71,6 +71,15 @@ def search(request):
                 })                
 
 def create(request):
+    """
+    Redirects the user to the create new page if the request methos is GET.
+    Otherwise tries to save the user's new entry if it does not exist already.
+    If an entry with the same title exists, it redirects the user to the error page.
+
+    :param request: The HTTP request the user makes 
+    :type request: HttpRequest
+    """
+
     if request.method == "GET":
         return render(request, "encyclopedia/create.html")
     else:
@@ -78,14 +87,29 @@ def create(request):
         title = request.POST.get('title')
         content = request.POST.get('mdown')
 
-        # save the new entry
-        util.save_entry(title, content)
+        # create the new entry if it doesn't already existc
+        # if entry exists => check is None
+        # else => check = 1
+        check = util.create_entry(title, content)
 
         # converting the entry to html so that we can display it
         html_content = util.convert_md_to_html(title)
 
-        return render(request, "encyclopedia/entry.html", {
-            "title": title,
-            "html_content": html_content
+        # if the entry already exists the redirect to the error page
+        if check is None:
+            err_msg = ("The entry you tried to create already exists. " +  
+            "Please return to the <a href=" + reverse("index") + 
+            ">home</a> page or try <a href=" + reverse("create") + ">creating " +
+            "another entry</a> ") 
+            return render(request, "encyclopedia/error.html", {
+            "title": "Error",
+            "message": err_msg
         })
+
+        # redirect to the new entry's page
+        else: 
+            return render(request, "encyclopedia/entry.html", {
+                "title": title,
+                "html_content": html_content
+            })
 
