@@ -7,10 +7,12 @@
 {% block body %}
     <h1>Create new entry</h1>
 
-    <form>
-        <label for="Entry Title">Enter the title of the new entry: </label>
-        <input type="text" name="Entry Title">
-        <textarea class="txtarea" placeholder="Enter the Markdown content of your entry"></textarea>
+    <form method="POST" action="{% url 'create' %}">
+        <label for="title">Enter the title of the new entry: </label>
+        <input type="text" name="title">
+        <br>
+        <label for="mdown">Enter the Markdown content of your new entry:</label>
+        <textarea class="txtarea" name="mdown"></textarea>
         <input type="submit" value="Submit new entry">
     </form>
 {% endblock %}
