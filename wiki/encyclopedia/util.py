@@ -42,7 +42,7 @@ def create_entry(title, content):
     :type content: str?
     """
     file_name = f"entries/{title}.md"
-    if default_storage.exists(filename):
+    if default_storage.exists(file_name):
         return None # we will use this in the view
     else:
         default_storage.save(file_name, ContentFile(content))
