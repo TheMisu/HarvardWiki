@@ -13,7 +13,6 @@ def list_entries():
     return list(sorted(re.sub(r"\.md$", "", filename)
                 for filename in filenames if filename.endswith(".md")))
 
-
 def save_entry(title, content):
     """
     Saves an encyclopedia entry, given its title and Markdown
@@ -47,7 +46,6 @@ def create_entry(title, content):
     else:
         default_storage.save(file_name, ContentFile(content))
         return 1 # return anything to pass the if check in the view 
-
 
 def get_entry(title: str):
     """
