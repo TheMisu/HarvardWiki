@@ -46,6 +46,7 @@ def create_entry(title, content):
         return None # we will use this in the view
     else:
         default_storage.save(file_name, ContentFile(content))
+        return 1 # return anything to pass the if check in the view 
 
 
 def get_entry(title: str):
