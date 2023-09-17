@@ -30,6 +30,23 @@ def save_entry(title, content):
         default_storage.delete(filename)
     default_storage.save(filename, ContentFile(content))
 
+def create_entry(title, content):
+    """
+    Saves an encyclopedia entry, given its title and Markdown
+    content. If an existing entry with the same title already exists,
+    it returns None in order to help with programming the view.
+
+    :param title: The title of the entry we want to save
+    :type title: str
+    :param content: The md content of the new entry we want to create
+    :type content: str?
+    """
+    file_name = f"entries/{title}.md"
+    if default_storage.exists(filename):
+        return None # we will use this in the view
+    else:
+        default_storage.save(file_name, ContentFile(content))
+
 
 def get_entry(title: str):
     """
