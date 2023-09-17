@@ -11,9 +11,10 @@
         {% csrf_token %}
         <label for="title">Enter the title of the new entry: </label>
         <input type="text" name="title">
-        <br>
+        <br/>
         <label for="mdown">Enter the Markdown content of your new entry:</label>
-        <textarea class="txtarea" name="mdown"></textarea>
+        <textarea name="mdown"></textarea>
+        <br/>
         <input type="submit" value="Submit new entry">
     </form>
 {% endblock %}
