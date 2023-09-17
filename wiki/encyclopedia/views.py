@@ -71,4 +71,21 @@ def search(request):
                 })                
 
 def create(request):
-    return render(request, "encyclopedia/create.html")
+    if request.method == "GET":
+        return render(request, "encyclopedia/create.html")
+    else:
+        # get the values submitted in the form
+        title = request.POST.get('title')
+        content = request.POST.get('mdown')
+
+        # save the new entry
+        util.save_entry(title, content)
+
+        # converting the entry to html so that we can display it
+        html_content = util.convert_md_to_html(title)
+
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "html_content": html_content
+        })
+
