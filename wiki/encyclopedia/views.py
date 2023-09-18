@@ -113,3 +113,21 @@ def create(request):
                 "html_content": html_content
             })
 
+def edit(request, title):
+    """
+    Takes the user to a page where they can edit the wiki entry by writing in a
+    textarea.
+    Saves the edited entry and redirects the user to the new page.
+
+    :param request: The HTTP request made by the user.
+    :type request: HTTP request 
+    """
+    if  request.method == "GET":
+        md_content = util.get_entry(title)
+        
+        return render(request, "encyclopedia/edit.html", {
+            "title": title,
+            "content": md_content
+        })
+    else:
+        pass
