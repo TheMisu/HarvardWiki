@@ -3,6 +3,7 @@ import re
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from markdown2 import Markdown
+import random
 
 
 def list_entries():
@@ -12,6 +13,12 @@ def list_entries():
     _, filenames = default_storage.listdir("entries")
     return list(sorted(re.sub(r"\.md$", "", filename)
                 for filename in filenames if filename.endswith(".md")))
+
+def get_random_entry():
+    """
+    This function returns a random entry from the list.
+    """
+    return random.choice(list_entries())
 
 def save_entry(title, content):
     """
