@@ -122,6 +122,7 @@ def edit(request, title):
     :param request: The HTTP request made by the user.
     :type request: HTTP request 
     """
+    # just loads the page
     if  request.method == "GET":
         md_content = util.get_entry(title)
         
@@ -129,5 +130,17 @@ def edit(request, title):
             "title": title,
             "content": md_content
         })
+    # processes the editing of the page (tasks 5.2 and 5.3)
     else:
-        pass
+        content = request.POST.get('mdown')
+        
+        #save the edited entry
+        util.save_entry(title, content)
+
+        # convert it to html so that we can properly display it
+        html_content = util.convert_md_to_html(title)
+
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "html_content": html_content
+        })
