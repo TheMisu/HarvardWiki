@@ -144,3 +144,20 @@ def edit(request, title):
             "title": title,
             "html_content": html_content
         })
+    
+def random(request):
+    """
+    Redirects the user to a randomly selected entry
+
+    :param request: The HTTP request made by the user
+    :type request: HttpRequest
+    """
+    random_title = util.get_random_entry()
+    random_html = util.convert_md_to_html(random_title)
+
+    return render(request, "encyclopedia/entry.html", {
+        "title": random_title,
+        "html_content": random_html
+    })
+
+
