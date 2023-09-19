@@ -28,8 +28,8 @@ My solution to CS50w's Project 1
     - When the page is saved, if an encyclopedia entry already exists with the provided title, the user should be presented with an error message.
     - Otherwise, the encyclopedia entry should be saved to disk, and the user should be taken to the new entry’s page.
 
-5. **Edit Page**: On each entry page, the user should be able to click a link to be taken to a page where the user can edit that entry’s Markdown content in a _textarea_.
-    - ~~The _textarea_ should be pre-populated with the existing Markdown content of the page. (i.e., the existing content should be the initial _value_ of the _textarea_).~~
+5. ~~**Edit Page**:~~ On each entry page, the user should be able to click a link to be taken to a page where the user can edit that entry’s Markdown content in a _textarea_.
+    - The _textarea_ should be pre-populated with the existing Markdown content of the page. (i.e., the existing content should be the initial _value_ of the _textarea_).
     - The user should be able to click a button to save the changes made to the entry.
     - Once the entry is saved, the user should be redirected back to that entry’s page.
 
